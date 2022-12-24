@@ -13,22 +13,24 @@ typedef struct Cmd1Command_s
     Command base;
     int x;
     int y;
+    int z;
 } Cmd1Command;
 
 // Implementação da operação "Cmd1"
 void Cmd1Command_Execute (Command *base)
 {
     Cmd1Command *self = (Cmd1Command *)base;
-    printf ("%d\n", self->x + self->y);
+    printf ("%d\n", self->x + self->y + self->z);
 }
 
 // Função que cria um objeto Cmd1Command
-Cmd1Command *Cmd1Command_Create (int x, int y)
+Cmd1Command *Cmd1Command_Create (int x, int y, int z)
 {
     Cmd1Command *self = malloc (sizeof (Cmd1Command));
     self->base.Execute = Cmd1Command_Execute;
     self->x = x;
     self->y = y;
+    self->z = z;
     return self;
 }
 
@@ -52,11 +54,11 @@ void Invoker_ExecuteCommand (Invoker *self)
 
 int main()
 {
-    Invoker calculator;
+    Invoker invoker;
 
-    // Define e executa o comando "Adicionar"
-    Invoker_SetCommand (&calculator, (Command *)Cmd1Command_Create (10, 5));
-    Invoker_ExecuteCommand (&calculator); // Imprime 15
+    // Define e executa o comando "Cmd1"
+    Invoker_SetCommand (&invoker, (Command *)Cmd1Command_Create (10, 5, 6));
+    Invoker_ExecuteCommand (&invoker); // Imprime 21
 
     return 0;
 }
