@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 
 # Classe base para as operações (comandos)
+
+
 class Command(ABC):
     @abstractmethod
     def execute(self):
@@ -16,6 +18,8 @@ class AddCommand(Command):
         print(self.x + self.y)
 
 # Classe concreta para a operação "Subtrair"
+
+
 class SubtractCommand(Command):
     def __init__(self, x, y):
         self.x = x
@@ -25,6 +29,8 @@ class SubtractCommand(Command):
         print(self.x - self.y)
 
 # Classe que armazena e executa um comando
+
+
 class Calculator:
     def __init__(self):
         self.command = None
@@ -34,6 +40,7 @@ class Calculator:
 
     def execute_command(self):
         self.command.execute()
+
 
 def main():
     calculator = Calculator()
@@ -45,6 +52,7 @@ def main():
     # Define e executa o comando "Subtrair"
     calculator.set_command(SubtractCommand(10, 5))
     calculator.execute_command()  # Imprime 5
+
 
 if __name__ == "__main__":
     main()
