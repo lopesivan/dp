@@ -18,7 +18,7 @@ targets := $(target)
 all: $(targets)
 main: $(sources:.cpp=.o)
 	$(CC) $(LDFLAGS) $@ $(notdir $^)
-run:
+run: main
 	./main
 
 clean:
