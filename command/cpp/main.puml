@@ -1,0 +1,14 @@
+@startuml
+interface Command
+class Invoker
+
+Invoker : -command
+Invoker : +SetCommand(command)
+Invoker : +executeCommand()
+
+Invoker o-- Command: command
+Command <|-- ConcreteCommand
+
+Command : +execute()
+ConcreteCommand : +execute()
+@enduml
