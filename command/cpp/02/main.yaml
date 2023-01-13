@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: command
+lang: cpp
+
+Command:
+  name: Command
+  method: Execute
+  Description: >
+    Classe base para as operações (comandos)
+
+Invocker:
+  name: Invocker
+  methods: |
+    SetCommand
+    ExecuteCommand
+  Description: >
+    Classe que armazena e executa um comando
+
+ConcreteCommands:
+  commands:
+    - name: Cmd1Command
+      arguments: >
+        int x
+        int y
+      attributes: >
+        int x_
+        int y_
+      methods: |
+        std::cout << x_ + y_ << std::endl
+      Description: >
+        Classe concreta para a operação "Cmd1"
+
+    - name: Cmd2Command
+      arguments: >
+        int x
+        int y
+      attributes: >
+        int x_
+        int y_
+      methods: |
+        std::cout << x_ + y_ << std::endl
+      Description: >
+        Classe concreta para a operação "Cmd2"
+
